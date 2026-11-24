@@ -12,7 +12,16 @@ use_json_request_body = True
 # ------------------
 # include js, css files in header of desk.html
 app_include_js = "/assets/erp_ibas/js/erp_ibas.js"
-app_include_css = "/assets/erp_ibas/css/erp_ibas.css"
+app_include_css = [
+    "/assets/erp_ibas/css/erp_ibas.css",
+    "/assets/erp_ibas/page/erp_ibas_dashboard/erp_ibas_dashboard.css"
+]
+
+# Set Default Landing Page for Desk
+role_home_page = {
+    "System Manager": "app/erp_ibas_dashboard",
+    "All": "app/erp_ibas_dashboard"
+}
 
 # Document Events Hooks
 # ---------------------

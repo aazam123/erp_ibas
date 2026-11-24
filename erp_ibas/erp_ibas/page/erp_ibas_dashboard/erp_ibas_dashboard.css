@@ -1,0 +1,347 @@
+/* ERP-IBAS Cyberpunk Dark Executive Dashboard Styling */
+
+.erp-ibas-container {
+    background-color: #06090f;
+    min-height: calc(100vh - 60px);
+    padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #e2e8f0;
+    box-sizing: border-box;
+}
+
+/* Glassmorphism Outer Neon Frame */
+.ibas-neon-board {
+    display: flex;
+    background: radial-gradient(circle at 50% 0%, #0d1527 0%, #080d1a 60%, #04070e 100%);
+    border-radius: 24px;
+    border: 1.5px solid rgba(0, 210, 255, 0.45);
+    box-shadow: 0 0 35px rgba(0, 160, 255, 0.25), inset 0 0 25px rgba(0, 180, 255, 0.08);
+    overflow: hidden;
+    position: relative;
+    min-height: 860px;
+}
+
+/* Sidebar */
+.ibas-sidebar {
+    width: 240px;
+    background: rgba(10, 15, 28, 0.85);
+    border-right: 1px solid rgba(255, 255, 255, 0.07);
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    backdrop-filter: blur(10px);
+    flex-shrink: 0;
+}
+
+.ibas-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+    padding-left: 8px;
+}
+
+.ibas-brand-title {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+}
+
+.ibas-brand-badge {
+    background: linear-gradient(135deg, #00d2ff, #0066ff);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 6px;
+    letter-spacing: 1px;
+}
+
+.ibas-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ibas-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #94a3b8;
+    text-decoration: none !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ibas-nav-item:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.ibas-nav-item.active {
+    background: linear-gradient(90deg, #1d4ed8 0%, #2563eb 100%);
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
+}
+
+.ibas-nav-icon {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ibas-user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ibas-avatar {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #6366f1, #3b82f6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.ibas-user-info {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.ibas-user-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #f1f5f9;
+}
+
+.ibas-user-role {
+    font-size: 10px;
+    color: #64748b;
+}
+
+/* Main Dashboard Body */
+.ibas-main {
+    flex: 1;
+    padding: 28px 32px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.ibas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ibas-page-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.3px;
+    margin: 0;
+}
+
+.ibas-filter-select {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #cbd5e1;
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Metric Cards Row (5 Cards) */
+.ibas-metrics-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+}
+
+.ibas-metric-card {
+    background: rgba(14, 21, 38, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    padding: 16px 16px 12px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.ibas-metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    border-color: rgba(0, 210, 255, 0.3);
+}
+
+.ibas-metric-label {
+    font-size: 11.5px;
+    color: #94a3b8;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.ibas-metric-val {
+    font-size: 23px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+}
+
+.ibas-metric-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ibas-trend-badge {
+    font-size: 10.5px;
+    color: #4ade80;
+    font-weight: 600;
+}
+
+.ibas-trend-sub {
+    font-size: 10px;
+    color: #64748b;
+}
+
+.ibas-sparkline-canvas {
+    width: 60px;
+    height: 24px;
+}
+
+/* Grid Sections */
+.ibas-grid-mid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+}
+
+.ibas-card-panel {
+    background: rgba(14, 21, 38, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 20px;
+    position: relative;
+}
+
+.ibas-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.ibas-panel-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #f8fafc;
+    margin: 0;
+}
+
+/* Donut & Segment Area */
+.ibas-donut-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 10px;
+}
+
+.ibas-donut-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 11.5px;
+}
+
+.ibas-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #cbd5e1;
+}
+
+.ibas-legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+/* Bottom Grid */
+.ibas-grid-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 16px;
+}
+
+.ibas-world-map-svg {
+    width: 100%;
+    height: 180px;
+}
+
+.ibas-heatmap-scale {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 9px;
+    color: #64748b;
+}
+
+.ibas-scale-bar {
+    width: 6px;
+    height: 48px;
+    background: linear-gradient(180deg, #00d2ff 0%, #1e3a8a 100%);
+    border-radius: 3px;
+}
+
+/* Hidden tab view */
+.ibas-view-section {
+    display: none;
+}
+
+.ibas-view-section.active {
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .ibas-metrics-row {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .ibas-grid-mid, .ibas-grid-bottom {
+        grid-template-columns: 1fr;
+    }
+}

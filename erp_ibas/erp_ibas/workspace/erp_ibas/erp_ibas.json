@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"header_1\",\"type\":\"header\",\"data\":{\"text\":\"ERP-IBAS Executive & Intelligent Automation Center\",\"level\":3,\"col\":12}},{\"id\":\"sc_1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"IBAS Settings\",\"col\":3}},{\"id\":\"sc_2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Anomaly Detection\",\"col\":3}},{\"id\":\"sc_3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Financial Forecast\",\"col\":3}},{\"id\":\"sc_4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Fraud Risk Center\",\"col\":3}},{\"id\":\"spacer_1\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"card_1\",\"type\":\"card\",\"data\":{\"card_name\":\"AI & Predictive Intelligence\",\"col\":4}},{\"id\":\"card_2\",\"type\":\"card\",\"data\":{\"card_name\":\"Inter-Company & Multi-Entity\",\"col\":4}},{\"id\":\"card_3\",\"type\":\"card\",\"data\":{\"card_name\":\"Compliance & Reconciliations\",\"col\":4}}]",
+ "content": "[{\"id\":\"header_1\",\"type\":\"header\",\"data\":{\"text\":\"ERP-IBAS Intelligent Enterprise Suite\",\"level\":3,\"col\":12}},{\"id\":\"sc_0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Executive Dashboard\",\"col\":4}},{\"id\":\"sc_1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"IBAS Settings\",\"col\":4}},{\"id\":\"sc_2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Anomaly Detection\",\"col\":4}},{\"id\":\"sc_3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Financial Forecast\",\"col\":4}},{\"id\":\"sc_4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Fraud Risk Center\",\"col\":4}},{\"id\":\"sc_5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Inter-Company\",\"col\":4}},{\"id\":\"spacer_1\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"card_1\",\"type\":\"card\",\"data\":{\"card_name\":\"AI & Predictive Intelligence\",\"col\":4}},{\"id\":\"card_2\",\"type\":\"card\",\"data\":{\"card_name\":\"Inter-Company & Multi-Entity\",\"col\":4}},{\"id\":\"card_3\",\"type\":\"card\",\"data\":{\"card_name\":\"Compliance & Reconciliations\",\"col\":4}}]",
  "creation": "2026-11-23 12:00:00.000000",
  "custom_blocks": [],
  "docstatus": 0,
@@ -18,6 +18,14 @@
    "label": "AI & Predictive Intelligence",
    "link_type": "DocType",
    "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Executive Dashboard",
+   "link_to": "erp_ibas_dashboard",
+   "link_type": "Page",
+   "type": "Link"
   },
   {
    "hidden": 0,
@@ -106,7 +114,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-11-23 12:00:00.000000",
+ "modified": "2026-11-24 11:00:00.000000",
  "modified_by": "Administrator",
  "module": "Erp_ibas",
  "name": "ERP-IBAS",
@@ -126,6 +134,13 @@
  ],
  "sequence_id": 1.0,
  "shortcuts": [
+  {
+   "color": "Blue",
+   "doc_view": "",
+   "label": "Executive Dashboard",
+   "link_to": "erp_ibas_dashboard",
+   "type": "Page"
+  },
   {
    "color": "Grey",
    "doc_view": "List",
@@ -152,6 +167,13 @@
    "doc_view": "List",
    "label": "Fraud Risk Center",
    "link_to": "IBAS Fraud Risk Assessment",
+   "type": "DocType"
+  },
+  {
+   "color": "Purple",
+   "doc_view": "List",
+   "label": "Inter-Company",
+   "link_to": "IBAS Intercompany Transaction",
    "type": "DocType"
   }
  ],
