@@ -61,7 +61,3 @@ scheduler_events = {
         "erp_ibas.tasks.daily"
     ]
 }
-
-# Typing and API Export
-export_python_type_annotations = True
-require_type_annotated_api_methods = False
