@@ -1,0 +1,165 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-11-23 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "transaction_type",
+  "source_company",
+  "target_company",
+  "sync_status",
+  "sb_docs",
+  "source_doctype",
+  "source_name",
+  "cb_target_doc",
+  "target_doctype",
+  "target_name",
+  "sb_amounts",
+  "transaction_amount",
+  "currency",
+  "cb_sync",
+  "synced_at",
+  "error_message"
+ ],
+ "fields": [
+  {
+   "fieldname": "transaction_type",
+   "fieldtype": "Select",
+   "label": "Transaction Type",
+   "options": "Sales Order -> Purchase Order\nSales Invoice -> Purchase Invoice\nIntercompany Stock Transfer\nJournal Balance Clearing",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "source_company",
+   "fieldtype": "Link",
+   "label": "Source Company",
+   "options": "Company",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "target_company",
+   "fieldtype": "Link",
+   "label": "Target Company",
+   "options": "Company",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "sync_status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Pending\nSynced\nSettled\nFailed",
+   "in_list_view": 1,
+   "default": "Pending"
+  },
+  {
+   "fieldname": "sb_docs",
+   "fieldtype": "Section Break",
+   "label": "Linked Documents"
+  },
+  {
+   "fieldname": "source_doctype",
+   "fieldtype": "Link",
+   "label": "Source DocType",
+   "options": "DocType",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "source_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Source Document",
+   "options": "source_doctype",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_target_doc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "target_doctype",
+   "fieldtype": "Link",
+   "label": "Target DocType",
+   "options": "DocType",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "target_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Target Document",
+   "options": "target_doctype",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sb_amounts",
+   "fieldtype": "Section Break",
+   "label": "Financial Values"
+  },
+  {
+   "fieldname": "transaction_amount",
+   "fieldtype": "Currency",
+   "label": "Transaction Amount",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "cb_sync",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "synced_at",
+   "fieldtype": "Datetime",
+   "label": "Synced At"
+  },
+  {
+   "fieldname": "error_message",
+   "fieldtype": "Small Text",
+   "label": "Error / Status Log"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 0,
+ "istable": 0,
+ "modified": "2026-11-23 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Erp_ibas",
+ "name": "IBAS Intercompany Transaction",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

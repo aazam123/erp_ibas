@@ -1,0 +1,159 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-11-23 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "parent_company",
+  "subsidiary_company",
+  "auto_sync",
+  "sb_entities",
+  "customer_in_parent",
+  "cb_supp",
+  "supplier_in_subsidiary",
+  "sb_accounts",
+  "internal_receivable_account",
+  "internal_payable_account",
+  "cb_elim",
+  "elimination_account",
+  "sb_warehouses",
+  "default_parent_warehouse",
+  "cb_sub_wh",
+  "default_subsidiary_warehouse"
+ ],
+ "fields": [
+  {
+   "fieldname": "parent_company",
+   "fieldtype": "Link",
+   "label": "Parent / Selling Company",
+   "options": "Company",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "subsidiary_company",
+   "fieldtype": "Link",
+   "label": "Subsidiary / Buying Company",
+   "options": "Company",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "auto_sync",
+   "fieldtype": "Check",
+   "label": "Enable Auto Mirroring",
+   "default": "1",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sb_entities",
+   "fieldtype": "Section Break",
+   "label": "Entity Representations"
+  },
+  {
+   "fieldname": "customer_in_parent",
+   "fieldtype": "Link",
+   "label": "Customer Representing Subsidiary",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cb_supp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "supplier_in_subsidiary",
+   "fieldtype": "Link",
+   "label": "Supplier Representing Parent",
+   "options": "Supplier",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sb_accounts",
+   "fieldtype": "Section Break",
+   "label": "Clearing & Elimination Accounts"
+  },
+  {
+   "fieldname": "internal_receivable_account",
+   "fieldtype": "Link",
+   "label": "Internal Receivable Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "internal_payable_account",
+   "fieldtype": "Link",
+   "label": "Internal Payable Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "cb_elim",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "elimination_account",
+   "fieldtype": "Link",
+   "label": "Intercompany Elimination Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "sb_warehouses",
+   "fieldtype": "Section Break",
+   "label": "Warehouses"
+  },
+  {
+   "fieldname": "default_parent_warehouse",
+   "fieldtype": "Link",
+   "label": "Default Parent Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "cb_sub_wh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "default_subsidiary_warehouse",
+   "fieldtype": "Link",
+   "label": "Default Subsidiary Warehouse",
+   "options": "Warehouse"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 0,
+ "istable": 0,
+ "modified": "2026-11-23 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Erp_ibas",
+ "name": "IBAS Intercompany Mapping",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

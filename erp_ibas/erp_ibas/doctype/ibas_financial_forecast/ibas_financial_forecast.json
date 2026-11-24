@@ -1,0 +1,186 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-11-23 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "forecast_date",
+  "forecast_period",
+  "forecast_horizon",
+  "cb_curr",
+  "currency",
+  "model_used",
+  "ai_confidence_score",
+  "sb_totals",
+  "projected_revenue",
+  "projected_expenses",
+  "cb_net",
+  "projected_inflow",
+  "projected_outflow",
+  "projected_net_cash_flow",
+  "sb_breakdown",
+  "items",
+  "sb_ai_insights",
+  "executive_summary",
+  "key_assumptions"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "forecast_date",
+   "fieldtype": "Date",
+   "label": "Forecast Date",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "forecast_period",
+   "fieldtype": "Select",
+   "label": "Forecast Period",
+   "options": "Monthly\nQuarterly\nAnnual",
+   "default": "Monthly",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "forecast_horizon",
+   "fieldtype": "Int",
+   "label": "Horizon (Periods)",
+   "default": "6"
+  },
+  {
+   "fieldname": "cb_curr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "model_used",
+   "fieldtype": "Data",
+   "label": "Model Used",
+   "default": "Holt-Winters & Exponential Smoothing"
+  },
+  {
+   "fieldname": "ai_confidence_score",
+   "fieldtype": "Percent",
+   "label": "Confidence Score (%)",
+   "default": "88.5"
+  },
+  {
+   "fieldname": "sb_totals",
+   "fieldtype": "Section Break",
+   "label": "Projected Financial Totals"
+  },
+  {
+   "fieldname": "projected_revenue",
+   "fieldtype": "Currency",
+   "label": "Total Projected Revenue",
+   "read_only": 1
+  },
+  {
+   "fieldname": "projected_expenses",
+   "fieldtype": "Currency",
+   "label": "Total Projected Expenses",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_net",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "projected_inflow",
+   "fieldtype": "Currency",
+   "label": "Total Projected Inflow",
+   "read_only": 1
+  },
+  {
+   "fieldname": "projected_outflow",
+   "fieldtype": "Currency",
+   "label": "Total Projected Outflow",
+   "read_only": 1
+  },
+  {
+   "fieldname": "projected_net_cash_flow",
+   "fieldtype": "Currency",
+   "label": "Net Cash Flow",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sb_breakdown",
+   "fieldtype": "Section Break",
+   "label": "Period-wise Forecast Breakdown"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Forecast Items",
+   "options": "IBAS Financial Forecast Item"
+  },
+  {
+   "fieldname": "sb_ai_insights",
+   "fieldtype": "Section Break",
+   "label": "AI Executive Insights"
+  },
+  {
+   "fieldname": "executive_summary",
+   "fieldtype": "Long Text",
+   "label": "Executive Summary"
+  },
+  {
+   "fieldname": "key_assumptions",
+   "fieldtype": "Small Text",
+   "label": "Key Assumptions & Risks"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 0,
+ "istable": 0,
+ "modified": "2026-11-23 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Erp_ibas",
+ "name": "IBAS Financial Forecast",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

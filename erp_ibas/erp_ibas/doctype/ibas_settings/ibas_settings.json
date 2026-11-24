@@ -1,0 +1,226 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-23 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "sb_general",
+  "enabled",
+  "enable_ai",
+  "enable_anomaly_detection",
+  "enable_fraud_detection",
+  "cb_flags",
+  "enable_intercompany_sync",
+  "enable_auto_reconciliation",
+  "enable_auto_workflows",
+  "sb_ai",
+  "ai_provider",
+  "model_name",
+  "temperature",
+  "cb_keys",
+  "gemini_api_key",
+  "openai_api_key",
+  "local_llm_endpoint",
+  "sb_thresholds",
+  "anomaly_sensitivity",
+  "high_risk_threshold",
+  "cb_thresh",
+  "auto_approval_limit",
+  "auto_reconcile_match_threshold",
+  "sb_intercompany",
+  "default_holding_company",
+  "cb_ic",
+  "auto_submit_mirrored_docs"
+ ],
+ "fields": [
+  {
+   "fieldname": "sb_general",
+   "fieldtype": "Section Break",
+   "label": "General & Feature Flags"
+  },
+  {
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enable ERP-IBAS Platform",
+   "default": "1"
+  },
+  {
+   "fieldname": "enable_ai",
+   "fieldtype": "Check",
+   "label": "Enable AI Intelligence Engine",
+   "default": "1"
+  },
+  {
+   "fieldname": "enable_anomaly_detection",
+   "fieldtype": "Check",
+   "label": "Enable Automated Anomaly Detection",
+   "default": "1"
+  },
+  {
+   "fieldname": "enable_fraud_detection",
+   "fieldtype": "Check",
+   "label": "Enable Fraud Risk Scoring",
+   "default": "1"
+  },
+  {
+   "fieldname": "cb_flags",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "enable_intercompany_sync",
+   "fieldtype": "Check",
+   "label": "Enable Inter-Company Auto Mirroring",
+   "default": "1"
+  },
+  {
+   "fieldname": "enable_auto_reconciliation",
+   "fieldtype": "Check",
+   "label": "Enable Automated Reconciliation",
+   "default": "1"
+  },
+  {
+   "fieldname": "enable_auto_workflows",
+   "fieldtype": "Check",
+   "label": "Enable Dynamic Approval Workflows",
+   "default": "1"
+  },
+  {
+   "fieldname": "sb_ai",
+   "fieldtype": "Section Break",
+   "label": "AI & Predictive Model Configuration"
+  },
+  {
+   "fieldname": "ai_provider",
+   "fieldtype": "Select",
+   "label": "AI Provider",
+   "options": "Built-in Rule & Statistical Engine (Offline)\nGemini\nOpenAI\nSelf-Hosted / Local LLM",
+   "default": "Built-in Rule & Statistical Engine (Offline)"
+  },
+  {
+   "fieldname": "model_name",
+   "fieldtype": "Data",
+   "label": "Model Name",
+   "default": "gemini-1.5-pro"
+  },
+  {
+   "fieldname": "temperature",
+   "fieldtype": "Float",
+   "label": "Temperature",
+   "default": "0.2"
+  },
+  {
+   "fieldname": "cb_keys",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gemini_api_key",
+   "fieldtype": "Password",
+   "label": "Gemini API Key"
+  },
+  {
+   "fieldname": "openai_api_key",
+   "fieldtype": "Password",
+   "label": "OpenAI API Key"
+  },
+  {
+   "fieldname": "local_llm_endpoint",
+   "fieldtype": "Data",
+   "label": "Local LLM Endpoint",
+   "default": "http://localhost:11434/v1"
+  },
+  {
+   "fieldname": "sb_thresholds",
+   "fieldtype": "Section Break",
+   "label": "Automation & Risk Thresholds"
+  },
+  {
+   "fieldname": "anomaly_sensitivity",
+   "fieldtype": "Select",
+   "label": "Anomaly Sensitivity",
+   "options": "Low\nMedium\nHigh",
+   "default": "Medium"
+  },
+  {
+   "fieldname": "high_risk_threshold",
+   "fieldtype": "Percent",
+   "label": "High Risk Threshold (%)",
+   "default": "75.0"
+  },
+  {
+   "fieldname": "cb_thresh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "auto_approval_limit",
+   "fieldtype": "Currency",
+   "label": "Auto Approval Amount Limit",
+   "default": "10000.0"
+  },
+  {
+   "fieldname": "auto_reconcile_match_threshold",
+   "fieldtype": "Percent",
+   "label": "Reconciliation Match Threshold (%)",
+   "default": "90.0"
+  },
+  {
+   "fieldname": "sb_intercompany",
+   "fieldtype": "Section Break",
+   "label": "Inter-Company Automation Settings"
+  },
+  {
+   "fieldname": "default_holding_company",
+   "fieldtype": "Link",
+   "label": "Primary Holding Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "cb_ic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "auto_submit_mirrored_docs",
+   "fieldtype": "Check",
+   "label": "Auto Submit Mirrored Transactions",
+   "default": "0"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "istable": 0,
+ "modified": "2026-11-23 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Erp_ibas",
+ "name": "IBAS Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

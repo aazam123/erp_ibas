@@ -1,0 +1,26 @@
+/* ERP-IBAS Custom Styling */
+
+.ibas-risk-box {
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.ibas-risk-alert {
+    background-color: #fff5f5;
+    border: 1px solid #feb2b2;
+    color: #9b2c2c;
+}
+
+.ibas-risk-clean {
+    background-color: #f0fff4;
+    border: 1px solid #9ae6b4;
+    color: #22543d;
+}
+
+.ibas-fraud-alert {
+    background-color: #fffaf0;
+    border: 1px solid #fbd38d;
+    color: #7b341e;
+}

@@ -1,0 +1,79 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-23 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "period_label",
+  "projected_revenue",
+  "projected_expenses",
+  "projected_inflow",
+  "projected_outflow",
+  "net_cash_flow",
+  "growth_rate",
+  "key_driver"
+ ],
+ "fields": [
+  {
+   "fieldname": "period_label",
+   "fieldtype": "Data",
+   "label": "Period",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "projected_revenue",
+   "fieldtype": "Currency",
+   "label": "Projected Revenue",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "projected_expenses",
+   "fieldtype": "Currency",
+   "label": "Projected Expenses",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "projected_inflow",
+   "fieldtype": "Currency",
+   "label": "Inflow",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "projected_outflow",
+   "fieldtype": "Currency",
+   "label": "Outflow",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "net_cash_flow",
+   "fieldtype": "Currency",
+   "label": "Net Cash Flow",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "growth_rate",
+   "fieldtype": "Percent",
+   "label": "Growth Rate (%)"
+  },
+  {
+   "fieldname": "key_driver",
+   "fieldtype": "Data",
+   "label": "Key Driver"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 0,
+ "istable": 1,
+ "modified": "2026-11-23 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Erp_ibas",
+ "name": "IBAS Financial Forecast Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

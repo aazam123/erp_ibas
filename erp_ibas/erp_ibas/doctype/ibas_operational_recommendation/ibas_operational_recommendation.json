@@ -1,0 +1,154 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-11-23 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "category",
+  "priority",
+  "company",
+  "status",
+  "sb_impact",
+  "potential_benefit",
+  "currency",
+  "cb_target",
+  "target_doctype",
+  "target_name",
+  "generated_at",
+  "sb_narrative",
+  "description",
+  "action_plan"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Recommendation Title",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "label": "Category",
+   "options": "Inventory Reorder\nDead / Slow Moving Stock\nCustomer Churn Risk\nSupplier Performance\nCash Flow Optimization\nDynamic Pricing & Margins",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "label": "Priority",
+   "options": "Low\nMedium\nHigh\nUrgent",
+   "in_list_view": 1,
+   "default": "Medium"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Active\nIn Progress\nImplemented\nDismissed",
+   "in_list_view": 1,
+   "default": "Active"
+  },
+  {
+   "fieldname": "sb_impact",
+   "fieldtype": "Section Break",
+   "label": "Financial Impact & Details"
+  },
+  {
+   "fieldname": "potential_benefit",
+   "fieldtype": "Currency",
+   "label": "Estimated Financial Benefit"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "cb_target",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "target_doctype",
+   "fieldtype": "Link",
+   "label": "Target DocType",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "target_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Target Record",
+   "options": "target_doctype"
+  },
+  {
+   "fieldname": "generated_at",
+   "fieldtype": "Datetime",
+   "label": "Generated At"
+  },
+  {
+   "fieldname": "sb_narrative",
+   "fieldtype": "Section Break",
+   "label": "Recommendation & Execution Plan"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Insight / Reasoning"
+  },
+  {
+   "fieldname": "action_plan",
+   "fieldtype": "Long Text",
+   "label": "Recommended Action Plan"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 0,
+ "istable": 0,
+ "modified": "2026-11-23 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Erp_ibas",
+ "name": "IBAS Operational Recommendation",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
