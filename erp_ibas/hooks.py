@@ -23,8 +23,8 @@ role_home_page = {
     "All": "app/erp_ibas_dashboard"
 }
 
-# Document Events Hooks
-# ---------------------
+# Document Events Hooks (ERPNext & HRMS Integration)
+# --------------------------------------------------
 doc_events = {
     "Sales Invoice": {
         "on_submit": [
@@ -55,6 +55,17 @@ doc_events = {
     },
     "Journal Entry": {
         "validate": [
+            "erp_ibas.ai.anomaly_detector.IBASAnomalyDetector.scan_document"
+        ]
+    },
+    # HRMS Integrations
+    "Expense Claim": {
+        "validate": [
+            "erp_ibas.ai.anomaly_detector.IBASAnomalyDetector.scan_document"
+        ]
+    },
+    "Salary Slip": {
+        "on_submit": [
             "erp_ibas.ai.anomaly_detector.IBASAnomalyDetector.scan_document"
         ]
     }

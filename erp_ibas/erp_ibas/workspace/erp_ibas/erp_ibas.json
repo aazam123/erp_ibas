@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"header_1\",\"type\":\"header\",\"data\":{\"text\":\"ERP-IBAS Intelligent Enterprise Suite\",\"level\":3,\"col\":12}},{\"id\":\"sc_0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Executive Dashboard\",\"col\":4}},{\"id\":\"sc_1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"IBAS Settings\",\"col\":4}},{\"id\":\"sc_2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Anomaly Detection\",\"col\":4}},{\"id\":\"sc_3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Financial Forecast\",\"col\":4}},{\"id\":\"sc_4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Fraud Risk Center\",\"col\":4}},{\"id\":\"sc_5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Inter-Company\",\"col\":4}},{\"id\":\"spacer_1\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"card_1\",\"type\":\"card\",\"data\":{\"card_name\":\"AI & Predictive Intelligence\",\"col\":4}},{\"id\":\"card_2\",\"type\":\"card\",\"data\":{\"card_name\":\"Inter-Company & Multi-Entity\",\"col\":4}},{\"id\":\"card_3\",\"type\":\"card\",\"data\":{\"card_name\":\"Compliance & Reconciliations\",\"col\":4}}]",
+ "content": "[{\"id\":\"header_1\",\"type\":\"header\",\"data\":{\"text\":\"ERP-IBAS Intelligent Enterprise Suite\",\"level\":3,\"col\":12}},{\"id\":\"sc_0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Executive Dashboard\",\"col\":3}},{\"id\":\"sc_1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"IBAS Settings\",\"col\":3}},{\"id\":\"sc_2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Anomaly Detection\",\"col\":3}},{\"id\":\"sc_3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Financial Forecast\",\"col\":3}},{\"id\":\"sc_4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Fraud Risk Center\",\"col\":3}},{\"id\":\"sc_5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Inter-Company\",\"col\":3}},{\"id\":\"sc_6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"HR Employees\",\"col\":3}},{\"id\":\"sc_7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Payroll Processing\",\"col\":3}},{\"id\":\"spacer_1\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"card_1\",\"type\":\"card\",\"data\":{\"card_name\":\"AI & Predictive Intelligence\",\"col\":4}},{\"id\":\"card_2\",\"type\":\"card\",\"data\":{\"card_name\":\"Inter-Company & Multi-Entity\",\"col\":4}},{\"id\":\"card_3\",\"type\":\"card\",\"data\":{\"card_name\":\"HR & Payroll (HRMS)\",\"col\":4}},{\"id\":\"card_4\",\"type\":\"card\",\"data\":{\"card_name\":\"Compliance & Reconciliations\",\"col\":4}}]",
  "creation": "2026-11-23 12:00:00.000000",
  "custom_blocks": [],
  "docstatus": 0,
@@ -85,6 +85,53 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "HR & Payroll (HRMS)",
+   "link_type": "DocType",
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Employee Directory",
+   "link_to": "Employee",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Payroll Entry",
+   "link_to": "Payroll Entry",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Salary Slip",
+   "link_to": "Salary Slip",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Expense Claim",
+   "link_to": "Expense Claim",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Leave Application",
+   "link_to": "Leave Application",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Compliance & Reconciliations",
    "link_type": "DocType",
    "type": "Card Break"
@@ -130,6 +177,9 @@
   },
   {
    "role": "Accounts Manager"
+  },
+  {
+   "role": "HR Manager"
   }
  ],
  "sequence_id": 1.0,
@@ -174,6 +224,20 @@
    "doc_view": "List",
    "label": "Inter-Company",
    "link_to": "IBAS Intercompany Transaction",
+   "type": "DocType"
+  },
+  {
+   "color": "Cyan",
+   "doc_view": "List",
+   "label": "HR Employees",
+   "link_to": "Employee",
+   "type": "DocType"
+  },
+  {
+   "color": "Yellow",
+   "doc_view": "List",
+   "label": "Payroll Processing",
+   "link_to": "Payroll Entry",
    "type": "DocType"
   }
  ],

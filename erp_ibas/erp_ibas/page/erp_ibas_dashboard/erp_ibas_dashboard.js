@@ -54,6 +54,11 @@ function render_dashboard(wrapper) {
                             <span class="ibas-nav-icon">📦</span>
                             <span>Inventory</span>
                         </li>
+                        <!-- HRMS Integration -->
+                        <li class="ibas-nav-item" data-route="app/employee">
+                            <span class="ibas-nav-icon">👥</span>
+                            <span>HR & Payroll</span>
+                        </li>
                         <li class="ibas-nav-item" data-route="app/ibas-financial-forecast">
                             <span class="ibas-nav-icon">🔮</span>
                             <span>AI Forecast</span>
@@ -259,10 +264,11 @@ function render_dashboard(wrapper) {
                             <div class="ibas-metric-val">25.0%</div>
                             <span class="ibas-trend-badge">Stable Q1 Corridor</span>
                         </div>
-                        <div class="ibas-metric-card">
-                            <div class="ibas-metric-label">OPEX</div>
-                            <div class="ibas-metric-val">$36.10M</div>
-                            <span class="ibas-trend-badge" style="color: #ef4444;">Above Target $3.28M</span>
+                        <!-- HRMS Payroll Metric -->
+                        <div class="ibas-metric-card" style="cursor: pointer;" onclick="frappe.set_route('app/payroll-entry')">
+                            <div class="ibas-metric-label">HRMS Payroll Cost</div>
+                            <div class="ibas-metric-val">$9.43M</div>
+                            <span class="ibas-trend-badge">👥 450 Active Employees</span>
                         </div>
                     </div>
 
@@ -354,7 +360,7 @@ function render_revenue_trend() {
     let h = canvas.height = 180;
 
     let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    let data = [7, 10, 11, 14, 13, 17, 14, 19, 17, 20, 22, 24.8]; // in Millions
+    let data = [7, 10, 11, 14, 13, 17, 14, 19, 17, 20, 22, 24.8];
 
     let max = 30;
     let padLeft = 45;
@@ -362,7 +368,6 @@ function render_revenue_trend() {
     let chartW = w - padLeft - 20;
     let chartH = h - padBottom - 10;
 
-    // Grid lines
     ctx.strokeStyle = "rgba(255, 255, 255, 0.06)";
     ctx.lineWidth = 1;
     ctx.fillStyle = "#64748b";
@@ -379,14 +384,12 @@ function render_revenue_trend() {
         ctx.fillText(valLabel, 8, y + 3);
     }
 
-    // Points calculation
     let points = data.map((val, idx) => {
         let x = padLeft + (idx / (data.length - 1)) * chartW;
         let y = 10 + chartH - (val / max) * chartH;
         return { x, y, label: months[idx] };
     });
 
-    // Gradient fill under curve
     let grad = ctx.createLinearGradient(0, 0, 0, h);
     grad.addColorStop(0, "rgba(0, 170, 255, 0.4)");
     grad.addColorStop(1, "rgba(0, 170, 255, 0.0)");
@@ -400,7 +403,6 @@ function render_revenue_trend() {
     ctx.closePath();
     ctx.fill();
 
-    // Glowing stroke
     ctx.strokeStyle = "#00d2ff";
     ctx.shadowColor = "#00d2ff";
     ctx.shadowBlur = 10;
@@ -411,9 +413,8 @@ function render_revenue_trend() {
         else ctx.lineTo(p.x, p.y);
     });
     ctx.stroke();
-    ctx.shadowBlur = 0; // reset
+    ctx.shadowBlur = 0;
 
-    // Draw dots & x labels
     points.forEach(p => {
         ctx.fillStyle = "#ffffff";
         ctx.beginPath();
@@ -453,7 +454,6 @@ function render_segment_donut() {
     });
     ctx.shadowBlur = 0;
 
-    // Center total label
     ctx.fillStyle = "#ffffff";
     ctx.font = "bold 13px sans-serif";
     ctx.textAlign = "center";
@@ -470,14 +470,12 @@ function render_world_map() {
     let w = canvas.width = canvas.parentElement.clientWidth - 40;
     let h = canvas.height = 170;
 
-    // Dark continent dots grid
     ctx.fillStyle = "rgba(255, 255, 255, 0.08)";
     for (let x = 10; x < w - 40; x += 10) {
         for (let y = 10; y < h - 10; y += 10) {
-            // Rough continental bounds
-            if ((x > 30 && x < 120 && y > 30 && y < 110) || // Americas
-                (x > 140 && x < 230 && y > 20 && y < 90) ||  // EMEA
-                (x > 210 && x < 320 && y > 30 && y < 140)) { // APAC
+            if ((x > 30 && x < 120 && y > 30 && y < 110) ||
+                (x > 140 && x < 230 && y > 20 && y < 90) ||
+                (x > 210 && x < 320 && y > 30 && y < 140)) {
                 ctx.beginPath();
                 ctx.arc(x, y, 1.2, 0, Math.PI * 2);
                 ctx.fill();
@@ -485,13 +483,12 @@ function render_world_map() {
         }
     }
 
-    // Glowing sales hubs
     let hubs = [
-        { x: 80, y: 55, r: 5, col: "#00d2ff" },   // New York
-        { x: 60, y: 70, r: 4, col: "#3b82f6" },   // West Coast
-        { x: 175, y: 45, r: 6, col: "#00d2ff" },  // London / Frankfurt
-        { x: 270, y: 75, r: 6, col: "#00d2ff" },  // Singapore / Tokyo
-        { x: 215, y: 70, r: 4, col: "#06b6d4" }   // Dubai
+        { x: 80, y: 55, r: 5, col: "#00d2ff" },
+        { x: 60, y: 70, r: 4, col: "#3b82f6" },
+        { x: 175, y: 45, r: 6, col: "#00d2ff" },
+        { x: 270, y: 75, r: 6, col: "#00d2ff" },
+        { x: 215, y: 70, r: 4, col: "#06b6d4" }
     ];
 
     hubs.forEach(hub => {
@@ -525,21 +522,17 @@ function render_margin_analysis() {
         let gmHeight = (grossMargin[i] / 40) * 120;
         let omHeight = (opMargin[i] / 40) * 120;
 
-        // Gross margin bar (Green)
         ctx.fillStyle = "#10b981";
         ctx.fillRect(x, 140 - gmHeight, barWidth, gmHeight);
 
-        // Operating margin stacked bar (Blue)
         ctx.fillStyle = "#3b82f6";
         ctx.fillRect(x, 140 - gmHeight - omHeight, barWidth, omHeight);
 
-        // Label
         ctx.fillStyle = "#64748b";
         ctx.font = "9px sans-serif";
         ctx.fillText(m, x - 2, 155);
     });
 
-    // Overlaid trend line (Green)
     ctx.strokeStyle = "#4ade80";
     ctx.lineWidth = 2;
     ctx.beginPath();
@@ -559,7 +552,6 @@ function render_operations_chart() {
     let w = canvas.width = canvas.parentElement.clientWidth - 40;
     let h = canvas.height = 200;
 
-    // Production Line waveform
     ctx.strokeStyle = "#00d2ff";
     ctx.lineWidth = 2;
     ctx.shadowColor = "#00d2ff";

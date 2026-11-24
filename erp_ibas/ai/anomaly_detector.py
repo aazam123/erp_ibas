@@ -15,7 +15,8 @@ class IBASAnomalyDetector:
     - Purchase Invoices
     - Journal Entries
     - Payment Entries
-    - Stock Entries
+    - Expense Claims (HRMS)
+    - Salary Slips (HRMS)
     """
 
     @classmethod
@@ -34,13 +35,16 @@ class IBASAnomalyDetector:
             cls._scan_journal_entry(doc, settings)
         elif doctype == "Payment Entry":
             cls._scan_payment_entry(doc, settings)
+        elif doctype == "Expense Claim":
+            cls._scan_expense_claim(doc, settings)
+        elif doctype == "Salary Slip":
+            cls._scan_salary_slip(doc, settings)
 
     @classmethod
     def _scan_sales_invoice(cls, doc, settings):
         anomalies = []
         grand_total = flt(doc.grand_total)
 
-        # 1. Historical Z-Score check on customer transaction size
         customer = doc.customer
         if customer and grand_total > 0:
             past_invoices = frappe.get_all(
@@ -66,7 +70,6 @@ class IBASAnomalyDetector:
                             "action": "Verify customer credit line, purchase order, and delivery confirmation before approval."
                         })
 
-        # 2. Abnormal Margin Variance (Selling below buying cost or huge discount)
         for item in doc.get("items", []):
             discount = flt(item.get("discount_percentage", 0))
             if discount > 35.0:
@@ -87,7 +90,6 @@ class IBASAnomalyDetector:
         supplier = doc.supplier
         bill_no = doc.get("bill_no")
 
-        # 1. Duplicate Invoice Number or Duplicate Amount from same supplier
         if supplier and bill_no:
             duplicates = frappe.get_all(
                 "Purchase Invoice",
@@ -103,7 +105,6 @@ class IBASAnomalyDetector:
                     "action": "Immediate freeze: duplicate billing risk detected."
                 })
 
-        # 2. Historical comparison for supplier
         if supplier and grand_total > 0:
             past_invs = frappe.get_all(
                 "Purchase Invoice",
@@ -134,7 +135,6 @@ class IBASAnomalyDetector:
         anomalies = []
         total_debit = flt(doc.total_debit)
 
-        # Check for round-sum high-value journal vouchers (fraud indicator)
         if total_debit >= 50000 and total_debit % 10000 == 0:
             anomalies.append({
                 "type": "Suspicious Ledger Posting",
@@ -160,10 +160,76 @@ class IBASAnomalyDetector:
             })
         cls._persist_anomalies(doc, anomalies)
 
+    # --- HRMS Integration: Expense Claims & Payroll ---
+
+    @classmethod
+    def _scan_expense_claim(cls, doc, settings):
+        anomalies = []
+        total_sanctioned = flt(doc.total_sanctioned_amount or doc.total_claimed_amount)
+        employee = doc.employee
+
+        # 1. Duplicate claim detection (same employee, same amount in last 30 days)
+        if employee and total_sanctioned > 0:
+            duplicates = frappe.get_all(
+                "Expense Claim",
+                filters={
+                    "employee": employee,
+                    "name": ["!=", doc.name],
+                    "total_claimed_amount": total_sanctioned,
+                    "docstatus": ["!=", 2]
+                },
+                fields=["name", "posting_date"]
+            )
+            if duplicates:
+                anomalies.append({
+                    "type": "Duplicate Transaction Risk",
+                    "severity": "High",
+                    "score": 85.0,
+                    "explanation": f"Potential duplicate expense claim: Employee {employee} already has identical claim ({doc.total_claimed_amount}) on voucher {duplicates[0].name}.",
+                    "action": "Audit original receipts and compare date of expenses to prevent double reimbursement."
+                })
+
+        # 2. Unusual expense claim amount vs policy
+        if total_sanctioned > 15000:
+            anomalies.append({
+                "type": "Spike in Operational Expenses",
+                "severity": "Medium",
+                "score": 60.0,
+                "explanation": f"Expense claim of {total_sanctioned:,.2f} exceeds standard employee discretionary threshold.",
+                "action": "Require department head and HR manager dual-approval."
+            })
+
+        cls._persist_anomalies(doc, anomalies)
+
+    @classmethod
+    def _scan_salary_slip(cls, doc, settings):
+        anomalies = []
+        net_pay = flt(doc.net_pay)
+        employee = doc.employee
+
+        if employee and net_pay > 0:
+            past_slips = frappe.get_all(
+                "Salary Slip",
+                filters={"employee": employee, "docstatus": 1, "name": ["!=", doc.name]},
+                fields=["net_pay"],
+                limit=6
+            )
+            if past_slips:
+                avg_net = sum(flt(x.net_pay) for x in past_slips) / len(past_slips)
+                if avg_net > 0 and (net_pay / avg_net) > 1.6:
+                    anomalies.append({
+                        "type": "Unusual Transaction Amount",
+                        "severity": "High",
+                        "score": 78.0,
+                        "explanation": f"Salary net payout ({net_pay:,.2f}) is 60%+ higher than employee's historical average ({avg_net:,.2f}).",
+                        "action": "Verify payroll components, incentives, and arrears before final bank disbursement."
+                    })
+
+        cls._persist_anomalies(doc, anomalies)
+
     @classmethod
     def _persist_anomalies(cls, doc, anomalies):
         for anomaly in anomalies:
-            # Check if already logged for this document
             existing = frappe.db.exists("IBAS Anomaly Log", {
                 "reference_doctype": doc.doctype,
                 "reference_name": doc.name,
@@ -181,10 +247,10 @@ class IBASAnomalyDetector:
                     "risk_score": anomaly["score"],
                     "status": "Detected",
                     "detection_date": now_datetime(),
-                    "detected_by_model": "IBAS Z-Score & Heuristic AI Engine",
+                    "detected_by_model": "IBAS HRMS & Operational AI Engine",
                     "explanation": anomaly["explanation"],
                     "suggested_action": anomaly["action"],
-                    "financial_impact": flt(getattr(doc, "grand_total", getattr(doc, "paid_amount", getattr(doc, "total_debit", 0))))
+                    "financial_impact": flt(getattr(doc, "grand_total", getattr(doc, "total_sanctioned_amount", getattr(doc, "net_pay", 0))))
                 })
                 log_doc.insert(ignore_permissions=True)
                 frappe.db.commit()
